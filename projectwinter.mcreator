@@ -92,6 +92,10 @@
       {
         "name": "TeamSelect",
         "children": []
+      },
+      {
+        "name": "BanRules",
+        "children": []
       }
     ]
   },
