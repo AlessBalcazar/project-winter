@@ -1,0 +1,60 @@
+{
+  "_fv": 24,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 178,
+    "height": 84,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": true,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "text": "Crear o unirse a un equipo:",
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "name": "Crear o unirse a un equipo:",
+          "x": 141,
+          "y": 89
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "nombre del equipo",
+          "width": 120,
+          "height": 20,
+          "name": "ITteam_name",
+          "x": 150,
+          "y": 107
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "OK",
+          "onClick": {
+            "name": "TeamSelectButton"
+          },
+          "width": 35,
+          "height": 20,
+          "name": "OK",
+          "x": 258,
+          "y": 134
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}

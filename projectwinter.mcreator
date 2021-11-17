@@ -1,14 +1,99 @@
 {
   "id_map": {},
-  "mod_elements": [],
-  "variable_elements": [],
+  "mod_elements": [
+    {
+      "name": "TeamSelectGUI",
+      "type": "gui",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "team_select_gui",
+      "path": "~/TeamSelect"
+    },
+    {
+      "name": "TeamSelectProc",
+      "type": "procedure",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "team_select_proc",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/TeamSelect"
+    },
+    {
+      "name": "TeamSelectButton",
+      "type": "procedure",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "team_select_button",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          }
+        ]
+      },
+      "path": "~/TeamSelect"
+    }
+  ],
+  "variable_elements": [
+    {
+      "name": "first_join",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
+    },
+    {
+      "name": "team_name",
+      "type": "string",
+      "scope": "player_persistent",
+      "value": "none"
+    }
+  ],
   "sound_elements": [],
   "language_map": {
     "en_us": {}
   },
   "foldersRoot": {
     "name": "~",
-    "children": []
+    "children": [
+      {
+        "name": "TeamSelect",
+        "children": []
+      }
+    ]
   },
   "workspaceSettings": {
     "modid": "projectwinter",
