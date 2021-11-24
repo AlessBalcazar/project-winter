@@ -66,6 +66,36 @@
         ]
       },
       "path": "~/TeamSelect"
+    },
+    {
+      "name": "InitialSetup",
+      "type": "procedure",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "initial_setup",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Setup"
     }
   ],
   "variable_elements": [
@@ -80,6 +110,12 @@
       "type": "string",
       "scope": "player_persistent",
       "value": "none"
+    },
+    {
+      "name": "initial_setup",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
   "sound_elements": [],
@@ -95,6 +131,10 @@
       },
       {
         "name": "BanRules",
+        "children": []
+      },
+      {
+        "name": "Setup",
         "children": []
       }
     ]
