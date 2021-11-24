@@ -205,6 +205,7 @@ public class ProjectwinterModVariables {
 			CompoundNBT nbt = new CompoundNBT();
 			nbt.putDouble("first_join", instance.first_join);
 			nbt.putString("team_name", instance.team_name);
+			nbt.putDouble("ban_time", instance.ban_time);
 			return nbt;
 		}
 
@@ -213,12 +214,14 @@ public class ProjectwinterModVariables {
 			CompoundNBT nbt = (CompoundNBT) inbt;
 			instance.first_join = nbt.getDouble("first_join");
 			instance.team_name = nbt.getString("team_name");
+			instance.ban_time = nbt.getDouble("ban_time");
 		}
 	}
 
 	public static class PlayerVariables {
 		public double first_join = 0;
 		public String team_name = "none";
+		public double ban_time = 0.0;
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayerEntity)
 				ProjectwinterMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity) entity),
@@ -253,6 +256,7 @@ public class ProjectwinterModVariables {
 		PlayerVariables clone = ((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
 		clone.first_join = original.first_join;
 		clone.team_name = original.team_name;
+		clone.ban_time = original.ban_time;
 		if (!event.isWasDeath()) {
 		}
 	}
@@ -279,6 +283,7 @@ public class ProjectwinterModVariables {
 							.orElse(new PlayerVariables()));
 					variables.first_join = message.data.first_join;
 					variables.team_name = message.data.team_name;
+					variables.ban_time = message.data.ban_time;
 				}
 			});
 			context.setPacketHandled(true);

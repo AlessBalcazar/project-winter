@@ -96,6 +96,54 @@
         ]
       },
       "path": "~/Setup"
+    },
+    {
+      "name": "BanRuleProc",
+      "type": "procedure",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "ban_rule_proc",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/BanRules"
+    },
+    {
+      "name": "BanRuleProc2",
+      "type": "procedure",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "ban_rule_proc_2",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          }
+        ]
+      },
+      "path": "~/BanRules"
     }
   ],
   "variable_elements": [
@@ -116,6 +164,12 @@
       "type": "number",
       "scope": "map",
       "value": "0"
+    },
+    {
+      "name": "ban_time",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0.0"
     }
   ],
   "sound_elements": [],
@@ -131,7 +185,12 @@
       },
       {
         "name": "BanRules",
-        "children": []
+        "children": [
+          {
+            "name": "DeathAnnounceAnimation",
+            "children": []
+          }
+        ]
       },
       {
         "name": "Setup",
