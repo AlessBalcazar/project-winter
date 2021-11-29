@@ -4,13 +4,20 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.TickEvent;
 
+import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.IWorld;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.math.vector.Vector2f;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.command.ICommandSource;
+import net.minecraft.command.CommandSource;
 
 import net.mcreator.projectwinter.ProjectwinterModVariables;
 import net.mcreator.projectwinter.ProjectwinterMod;
@@ -62,10 +69,16 @@ public class BanRuleProc2Procedure {
 				ProjectwinterMod.LOGGER.warn("Failed to load dependency z for procedure BanRuleProc2!");
 			return;
 		}
+		if (dependencies.get("world") == null) {
+			if (!dependencies.containsKey("world"))
+				ProjectwinterMod.LOGGER.warn("Failed to load dependency world for procedure BanRuleProc2!");
+			return;
+		}
 		Entity entity = (Entity) dependencies.get("entity");
 		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
 		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
 		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
+		IWorld world = (IWorld) dependencies.get("world");
 		if (((new Object() {
 			public int getScore(String score) {
 				if (entity instanceof PlayerEntity) {
@@ -86,6 +99,8 @@ public class BanRuleProc2Procedure {
 					capability.syncPlayerVariables(entity);
 				});
 			}
+			ProjectwinterModVariables.MapVariables.get(world).display_flag = (double) 1;
+			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
 		} else if (((new Object() {
 			public int getScore(String score) {
 				if (entity instanceof PlayerEntity) {
@@ -106,6 +121,17 @@ public class BanRuleProc2Procedure {
 					((ServerPlayerEntity) _ent).connection.setPlayerLocation(x, y, z, _ent.rotationYaw, _ent.rotationPitch, Collections.emptySet());
 				}
 			}
+		}
+		if ((ProjectwinterModVariables.MapVariables.get(world).display_flag == 1)) {
+			if (world instanceof ServerWorld) {
+				((World) world).getServer().getCommandManager()
+						.handleCommand(
+								new CommandSource(ICommandSource.DUMMY, new Vector3d(x, y, z), Vector2f.ZERO, (ServerWorld) world, 4, "",
+										new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
+								((null) + "" + (null)));
+			}
+			ProjectwinterModVariables.MapVariables.get(world).display_flag = (double) 0;
+			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
 		}
 	}
 }
