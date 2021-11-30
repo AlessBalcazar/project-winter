@@ -9,7 +9,7 @@
       "locked_code": false,
       "ids": {},
       "registry_name": "team_select_gui",
-      "path": "~/TeamSelect"
+      "path": "~/TeamSelect/Initial Menu"
     },
     {
       "name": "TeamSelectProc",
@@ -43,29 +43,7 @@
           }
         ]
       },
-      "path": "~/TeamSelect"
-    },
-    {
-      "name": "TeamSelectButton",
-      "type": "procedure",
-      "sortid": 3,
-      "compiles": true,
-      "locked_code": false,
-      "ids": {},
-      "registry_name": "team_select_button",
-      "metadata": {
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "guistate",
-            "type": "map"
-          }
-        ]
-      },
-      "path": "~/TeamSelect"
+      "path": "~/TeamSelect/Initial Menu"
     },
     {
       "name": "InitialSetup",
@@ -148,6 +126,170 @@
         ]
       },
       "path": "~/BanRules"
+    },
+    {
+      "name": "TeamSelectCreateTeam",
+      "type": "gui",
+      "sortid": 7,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "team_select_create_team",
+      "path": "~/TeamSelect/Create Menu"
+    },
+    {
+      "name": "TeamSelectJoinTeam",
+      "type": "gui",
+      "sortid": 8,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "team_select_join_team",
+      "path": "~/TeamSelect/Join Menu"
+    },
+    {
+      "name": "TeamCreateButton",
+      "type": "procedure",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "team_create_button",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/TeamSelect/Create Menu"
+    },
+    {
+      "name": "TeamJoinButton",
+      "type": "procedure",
+      "sortid": 10,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "team_join_button",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "guistate",
+            "type": "map"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/TeamSelect/Join Menu"
+    },
+    {
+      "name": "TeamCreateOpen",
+      "type": "procedure",
+      "sortid": 11,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "team_create_open",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/TeamSelect/Initial Menu"
+    },
+    {
+      "name": "TeamJoinOpen",
+      "type": "procedure",
+      "sortid": 12,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "team_join_open",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/TeamSelect/Initial Menu"
     }
   ],
   "variable_elements": [
@@ -176,7 +318,7 @@
       "value": "0.0"
     },
     {
-      "name": "display_flag",
+      "name": "death_players",
       "type": "number",
       "scope": "map",
       "value": "0"
@@ -191,7 +333,20 @@
     "children": [
       {
         "name": "TeamSelect",
-        "children": []
+        "children": [
+          {
+            "name": "Initial Menu",
+            "children": []
+          },
+          {
+            "name": "Create Menu",
+            "children": []
+          },
+          {
+            "name": "Join Menu",
+            "children": []
+          }
+        ]
       },
       {
         "name": "BanRules",

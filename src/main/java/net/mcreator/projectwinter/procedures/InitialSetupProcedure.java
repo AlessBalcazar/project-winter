@@ -72,13 +72,7 @@ public class InitialSetupProcedure {
 				((World) world).getServer().getCommandManager().handleCommand(
 						new CommandSource(ICommandSource.DUMMY, new Vector3d(x, y, z), Vector2f.ZERO, (ServerWorld) world, 4, "",
 								new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
-						"scoreboard objectives add ban_minutes dummy ");
-			}
-			if (world instanceof ServerWorld) {
-				((World) world).getServer().getCommandManager().handleCommand(
-						new CommandSource(ICommandSource.DUMMY, new Vector3d(x, y, z), Vector2f.ZERO, (ServerWorld) world, 4, "",
-								new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
-						"scoreboard objectives add ban_seconds dummy ");
+						"scoreboard objectives add ban_seconds dummy");
 			}
 			ProjectwinterModVariables.MapVariables.get(world).initial_setup = (double) 1;
 			ProjectwinterModVariables.MapVariables.get(world).syncData(world);

@@ -12,6 +12,7 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector2f;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreObjective;
+import net.minecraft.scoreboard.ScoreCriteria;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -99,8 +100,42 @@ public class BanRuleProc2Procedure {
 					capability.syncPlayerVariables(entity);
 				});
 			}
-			ProjectwinterModVariables.MapVariables.get(world).display_flag = (double) 1;
+			{
+				Entity _ent = entity;
+				if (_ent instanceof PlayerEntity) {
+					Scoreboard _sc = ((PlayerEntity) _ent).getWorldScoreboard();
+					ScoreObjective _so = _sc.getObjective("ban_seconds");
+					if (_so == null) {
+						_so = _sc.addObjective("ban_seconds", ScoreCriteria.DUMMY, new StringTextComponent("ban_seconds"),
+								ScoreCriteria.RenderType.INTEGER);
+					}
+					Score _scr = _sc.getOrCreateScore(((PlayerEntity) _ent).getScoreboardName(), _so);
+					_scr.setScorePoints((int) Math.ceil((((entity.getCapability(ProjectwinterModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+							.orElse(new ProjectwinterModVariables.PlayerVariables())).ban_time) / 20)));
+				}
+			}
+			ProjectwinterModVariables.MapVariables
+					.get(world).death_players = (double) (ProjectwinterModVariables.MapVariables.get(world).death_players + 1);
 			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
+			if (world instanceof ServerWorld) {
+				((World) world).getServer().getCommandManager().handleCommand(
+						new CommandSource(ICommandSource.DUMMY, new Vector3d(x, y, z), Vector2f.ZERO, (ServerWorld) world, 4, "",
+								new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
+						"scoreboard objectives setdisplay sidebar ban_seconds");
+			}
+			{
+				Entity _ent = entity;
+				if (_ent instanceof PlayerEntity) {
+					Scoreboard _sc = ((PlayerEntity) _ent).getWorldScoreboard();
+					ScoreObjective _so = _sc.getObjective("death_status");
+					if (_so == null) {
+						_so = _sc.addObjective("death_status", ScoreCriteria.DUMMY, new StringTextComponent("death_status"),
+								ScoreCriteria.RenderType.INTEGER);
+					}
+					Score _scr = _sc.getOrCreateScore(((PlayerEntity) _ent).getScoreboardName(), _so);
+					_scr.setScorePoints((int) 2);
+				}
+			}
 		} else if (((new Object() {
 			public int getScore(String score) {
 				if (entity instanceof PlayerEntity) {
@@ -121,17 +156,67 @@ public class BanRuleProc2Procedure {
 					((ServerPlayerEntity) _ent).connection.setPlayerLocation(x, y, z, _ent.rotationYaw, _ent.rotationPitch, Collections.emptySet());
 				}
 			}
-		}
-		if ((ProjectwinterModVariables.MapVariables.get(world).display_flag == 1)) {
-			if (world instanceof ServerWorld) {
-				((World) world).getServer().getCommandManager()
-						.handleCommand(
-								new CommandSource(ICommandSource.DUMMY, new Vector3d(x, y, z), Vector2f.ZERO, (ServerWorld) world, 4, "",
-										new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
-								((null) + "" + (null)));
+			{
+				double _setval = (double) (((entity.getCapability(ProjectwinterModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+						.orElse(new ProjectwinterModVariables.PlayerVariables())).ban_time) - 1);
+				entity.getCapability(ProjectwinterModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
+					capability.ban_time = _setval;
+					capability.syncPlayerVariables(entity);
+				});
 			}
-			ProjectwinterModVariables.MapVariables.get(world).display_flag = (double) 0;
-			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
+			{
+				Entity _ent = entity;
+				if (_ent instanceof PlayerEntity) {
+					Scoreboard _sc = ((PlayerEntity) _ent).getWorldScoreboard();
+					ScoreObjective _so = _sc.getObjective("ban_seconds");
+					if (_so == null) {
+						_so = _sc.addObjective("ban_seconds", ScoreCriteria.DUMMY, new StringTextComponent("ban_seconds"),
+								ScoreCriteria.RenderType.INTEGER);
+					}
+					Score _scr = _sc.getOrCreateScore(((PlayerEntity) _ent).getScoreboardName(), _so);
+					_scr.setScorePoints((int) Math.ceil((((entity.getCapability(ProjectwinterModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+							.orElse(new ProjectwinterModVariables.PlayerVariables())).ban_time) / 20)));
+				}
+			}
+			if ((((entity.getCapability(ProjectwinterModVariables.PLAYER_VARIABLES_CAPABILITY, null)
+					.orElse(new ProjectwinterModVariables.PlayerVariables())).ban_time) <= 0)) {
+				ProjectwinterModVariables.MapVariables
+						.get(world).death_players = (double) (ProjectwinterModVariables.MapVariables.get(world).death_players - 1);
+				ProjectwinterModVariables.MapVariables.get(world).syncData(world);
+				if ((ProjectwinterModVariables.MapVariables.get(world).death_players <= 0)) {
+					{
+						Entity _ent = entity;
+						if (!_ent.world.isRemote && _ent.world.getServer() != null) {
+							_ent.world.getServer().getCommandManager().handleCommand(
+									_ent.getCommandSource().withFeedbackDisabled().withPermissionLevel(4),
+									"scoreboard objectives setdisplay sidebar");
+						}
+					}
+					ProjectwinterModVariables.MapVariables.get(world).death_players = (double) 0;
+					ProjectwinterModVariables.MapVariables.get(world).syncData(world);
+				}
+				{
+					Entity _ent = entity;
+					if (!_ent.world.isRemote && _ent.world.getServer() != null) {
+						_ent.world.getServer().getCommandManager().handleCommand(
+								_ent.getCommandSource().withFeedbackDisabled().withPermissionLevel(4),
+								"tellraw @a [{\"selector\":\"@s\",\"bold\":true,\"color\":\"blue\"},{\"text\":\" ha sido desbaneado!\",\"color\":\"dark_purple\"}]");
+					}
+				}
+				{
+					Entity _ent = entity;
+					if (_ent instanceof PlayerEntity) {
+						Scoreboard _sc = ((PlayerEntity) _ent).getWorldScoreboard();
+						ScoreObjective _so = _sc.getObjective("death_status");
+						if (_so == null) {
+							_so = _sc.addObjective("death_status", ScoreCriteria.DUMMY, new StringTextComponent("death_status"),
+									ScoreCriteria.RenderType.INTEGER);
+						}
+						Score _scr = _sc.getOrCreateScore(((PlayerEntity) _ent).getScoreboardName(), _so);
+						_scr.setScorePoints((int) 0);
+					}
+				}
+			}
 		}
 	}
 }

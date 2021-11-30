@@ -1,0 +1,57 @@
+{
+  "_fv": 24,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 174,
+    "height": 83,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "text": "Unirse a equipo",
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "name": "Unirse a equipo",
+          "x": 168,
+          "y": 89
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Nombre del equipo",
+          "width": 120,
+          "height": 20,
+          "name": "join_team",
+          "x": 150,
+          "y": 107
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "OK",
+          "width": 35,
+          "height": 20,
+          "name": "OK",
+          "x": 195,
+          "y": 134
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}

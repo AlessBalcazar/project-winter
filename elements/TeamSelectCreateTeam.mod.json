@@ -1,0 +1,60 @@
+{
+  "_fv": 24,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 174,
+    "height": 83,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "text": "Crear equipo",
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "name": "Crear equipo",
+          "x": 177,
+          "y": 89
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "Nombre del equipo",
+          "width": 120,
+          "height": 20,
+          "name": "new_team",
+          "x": 150,
+          "y": 107
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "OK",
+          "onClick": {
+            "name": "TeamCreateButton"
+          },
+          "width": 35,
+          "height": 20,
+          "name": "OK",
+          "x": 195,
+          "y": 134
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}

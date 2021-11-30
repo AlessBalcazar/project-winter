@@ -22,8 +22,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.client.gui.ScreenManager;
 
-import net.mcreator.projectwinter.procedures.TeamJoinOpenProcedure;
-import net.mcreator.projectwinter.procedures.TeamCreateOpenProcedure;
 import net.mcreator.projectwinter.ProjectwinterModElements;
 
 import java.util.function.Supplier;
@@ -31,11 +29,11 @@ import java.util.Map;
 import java.util.HashMap;
 
 @ProjectwinterModElements.ModElement.Tag
-public class TeamSelectGUIGui extends ProjectwinterModElements.ModElement {
+public class TeamSelectJoinTeamGui extends ProjectwinterModElements.ModElement {
 	public static HashMap guistate = new HashMap();
 	private static ContainerType<GuiContainerMod> containerType = null;
-	public TeamSelectGUIGui(ProjectwinterModElements instance) {
-		super(instance, 1);
+	public TeamSelectJoinTeamGui(ProjectwinterModElements instance) {
+		super(instance, 8);
 		elements.addNetworkMessage(ButtonPressedMessage.class, ButtonPressedMessage::buffer, ButtonPressedMessage::new,
 				ButtonPressedMessage::handler);
 		elements.addNetworkMessage(GUISlotChangedMessage.class, GUISlotChangedMessage::buffer, GUISlotChangedMessage::new,
@@ -46,12 +44,12 @@ public class TeamSelectGUIGui extends ProjectwinterModElements.ModElement {
 	private static class ContainerRegisterHandler {
 		@SubscribeEvent
 		public void registerContainer(RegistryEvent.Register<ContainerType<?>> event) {
-			event.getRegistry().register(containerType.setRegistryName("team_select_gui"));
+			event.getRegistry().register(containerType.setRegistryName("team_select_join_team"));
 		}
 	}
 	@OnlyIn(Dist.CLIENT)
 	public void initElements() {
-		DeferredWorkQueue.runLater(() -> ScreenManager.registerFactory(containerType, TeamSelectGUIGuiWindow::new));
+		DeferredWorkQueue.runLater(() -> ScreenManager.registerFactory(containerType, TeamSelectJoinTeamGuiWindow::new));
 	}
 	public static class GuiContainerModFactory implements IContainerFactory {
 		public GuiContainerMod create(int id, PlayerInventory inv, PacketBuffer extraData) {
@@ -176,28 +174,6 @@ public class TeamSelectGUIGui extends ProjectwinterModElements.ModElement {
 		// security measure to prevent arbitrary chunk generation
 		if (!world.isBlockLoaded(new BlockPos(x, y, z)))
 			return;
-		if (buttonID == 0) {
-			{
-				Map<String, Object> $_dependencies = new HashMap<>();
-				$_dependencies.put("entity", entity);
-				$_dependencies.put("x", x);
-				$_dependencies.put("y", y);
-				$_dependencies.put("z", z);
-				$_dependencies.put("world", world);
-				TeamCreateOpenProcedure.executeProcedure($_dependencies);
-			}
-		}
-		if (buttonID == 1) {
-			{
-				Map<String, Object> $_dependencies = new HashMap<>();
-				$_dependencies.put("entity", entity);
-				$_dependencies.put("x", x);
-				$_dependencies.put("y", y);
-				$_dependencies.put("z", z);
-				$_dependencies.put("world", world);
-				TeamJoinOpenProcedure.executeProcedure($_dependencies);
-			}
-		}
 	}
 
 	private static void handleSlotAction(PlayerEntity entity, int slotID, int changeType, int meta, int x, int y, int z) {

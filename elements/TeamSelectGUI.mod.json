@@ -11,41 +11,31 @@
     "doesPauseGame": true,
     "components": [
       {
-        "type": "label",
+        "type": "button",
         "data": {
-          "text": "Crear o unirse a un equipo:",
-          "color": {
-            "value": -12829636,
-            "falpha": 0.0
+          "text": "Crear equipo",
+          "onClick": {
+            "name": "TeamCreateOpen"
           },
-          "name": "Crear o unirse a un equipo:",
+          "width": 85,
+          "height": 20,
+          "name": "Crear equipo",
           "x": 141,
           "y": 89
         }
       },
       {
-        "type": "textfield",
-        "data": {
-          "placeholder": "nombre del equipo",
-          "width": 120,
-          "height": 20,
-          "name": "ITteam_name",
-          "x": 150,
-          "y": 107
-        }
-      },
-      {
         "type": "button",
         "data": {
-          "text": "OK",
+          "text": "Unirse a equipo",
           "onClick": {
-            "name": "TeamSelectButton"
+            "name": "TeamJoinOpen"
           },
-          "width": 35,
+          "width": 100,
           "height": 20,
-          "name": "OK",
-          "x": 258,
-          "y": 134
+          "name": "Unirse a equipo",
+          "x": 141,
+          "y": 125
         }
       }
     ],

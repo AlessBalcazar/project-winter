@@ -105,7 +105,7 @@ public class ProjectwinterModVariables {
 	public static class MapVariables extends WorldSavedData {
 		public static final String DATA_NAME = "projectwinter_mapvars";
 		public double initial_setup = 0;
-		public double display_flag = 0;
+		public double death_players = 0;
 		public MapVariables() {
 			super(DATA_NAME);
 		}
@@ -117,13 +117,13 @@ public class ProjectwinterModVariables {
 		@Override
 		public void read(CompoundNBT nbt) {
 			initial_setup = nbt.getDouble("initial_setup");
-			display_flag = nbt.getDouble("display_flag");
+			death_players = nbt.getDouble("death_players");
 		}
 
 		@Override
 		public CompoundNBT write(CompoundNBT nbt) {
 			nbt.putDouble("initial_setup", initial_setup);
-			nbt.putDouble("display_flag", display_flag);
+			nbt.putDouble("death_players", death_players);
 			return nbt;
 		}
 
