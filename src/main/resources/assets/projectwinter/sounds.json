@@ -1,1 +1,11 @@
-{}
+{
+  "permadeath_sound": {
+    "category": "master",
+    "sounds": [
+      {
+        "name": "projectwinter:sonido-de-muerte-de-permadeath",
+        "stream": false
+      }
+    ]
+  }
+}

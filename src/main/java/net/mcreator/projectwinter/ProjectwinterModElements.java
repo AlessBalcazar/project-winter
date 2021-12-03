@@ -46,6 +46,8 @@ public class ProjectwinterModElements {
 	public final List<Supplier<Enchantment>> enchantments = new ArrayList<>();
 	public static Map<ResourceLocation, net.minecraft.util.SoundEvent> sounds = new HashMap<>();
 	public ProjectwinterModElements() {
+		sounds.put(new ResourceLocation("projectwinter", "permadeath_sound"),
+				new net.minecraft.util.SoundEvent(new ResourceLocation("projectwinter", "permadeath_sound")));
 		try {
 			ModFileScanData modFileInfo = ModList.get().getModFileById("projectwinter").getFile().getScanResult();
 			Set<ModFileScanData.AnnotationData> annotations = modFileInfo.getAnnotations();

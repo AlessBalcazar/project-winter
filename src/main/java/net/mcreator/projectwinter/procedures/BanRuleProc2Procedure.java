@@ -1,5 +1,6 @@
 package net.mcreator.projectwinter.procedures;
 
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.TickEvent;
@@ -10,6 +11,9 @@ import net.minecraft.world.IWorld;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector2f;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScoreCriteria;
@@ -93,6 +97,17 @@ public class BanRuleProc2Procedure {
 				return 0;
 			}
 		}.getScore("death_status")) == 1)) {
+			ProjectwinterModVariables.MapVariables.get(world).death_announce_f = (double) 1;
+			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
+			if (world instanceof World && !world.isRemote()) {
+				((World) world).playSound(null, new BlockPos((int) x, (int) y, (int) z),
+						(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("projectwinter:permadeath_sound")),
+						SoundCategory.MASTER, (float) 1, (float) 1);
+			} else {
+				((World) world).playSound(x, y, z,
+						(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("projectwinter:permadeath_sound")),
+						SoundCategory.MASTER, (float) 1, (float) 1, false);
+			}
 			{
 				double _setval = (double) 12000;
 				entity.getCapability(ProjectwinterModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {

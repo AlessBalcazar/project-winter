@@ -290,20 +290,85 @@
         ]
       },
       "path": "~/TeamSelect/Initial Menu"
+    },
+    {
+      "name": "DeathAnnounce",
+      "type": "overlay",
+      "sortid": 13,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {},
+      "registry_name": "death_announce",
+      "path": "~/BanRules/DeathAnnounceAnimation"
+    },
+    {
+      "name": "DeathAnnounceControl",
+      "type": "procedure",
+      "sortid": 14,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "death_announce_control",
+      "metadata": {
+        "return_type": "logic",
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/BanRules/DeathAnnounceAnimation"
+    },
+    {
+      "name": "DeathAnnounceIMG",
+      "type": "procedure",
+      "sortid": 15,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "death_announce_img",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/BanRules/DeathAnnounceAnimation"
+    },
+    {
+      "name": "DeathAnnounceTick",
+      "type": "procedure",
+      "sortid": 16,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "death_announce_tick",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/BanRules/DeathAnnounceAnimation"
     }
   ],
   "variable_elements": [
-    {
-      "name": "first_join",
-      "type": "number",
-      "scope": "player_persistent",
-      "value": "0"
-    },
     {
       "name": "team_name",
       "type": "string",
       "scope": "player_persistent",
       "value": "none"
+    },
+    {
+      "name": "first_join",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
     },
     {
       "name": "initial_setup",
@@ -322,11 +387,40 @@
       "type": "number",
       "scope": "map",
       "value": "0"
+    },
+    {
+      "name": "death_announce_f",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "death_img",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "tick_counter",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
-  "sound_elements": [],
+  "sound_elements": [
+    {
+      "name": "permadeath_sound",
+      "files": [
+        "sonido-de-muerte-de-permadeath"
+      ],
+      "category": "master",
+      "subtitle": ""
+    }
+  ],
   "language_map": {
-    "en_us": {}
+    "en_us": {
+      "subtitles.permadeath_sound": ""
+    }
   },
   "foldersRoot": {
     "name": "~",

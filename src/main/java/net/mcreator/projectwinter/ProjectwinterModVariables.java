@@ -106,6 +106,9 @@ public class ProjectwinterModVariables {
 		public static final String DATA_NAME = "projectwinter_mapvars";
 		public double initial_setup = 0;
 		public double death_players = 0;
+		public double death_announce_f = 0;
+		public double death_img = 0;
+		public double tick_counter = 0;
 		public MapVariables() {
 			super(DATA_NAME);
 		}
@@ -118,12 +121,18 @@ public class ProjectwinterModVariables {
 		public void read(CompoundNBT nbt) {
 			initial_setup = nbt.getDouble("initial_setup");
 			death_players = nbt.getDouble("death_players");
+			death_announce_f = nbt.getDouble("death_announce_f");
+			death_img = nbt.getDouble("death_img");
+			tick_counter = nbt.getDouble("tick_counter");
 		}
 
 		@Override
 		public CompoundNBT write(CompoundNBT nbt) {
 			nbt.putDouble("initial_setup", initial_setup);
 			nbt.putDouble("death_players", death_players);
+			nbt.putDouble("death_announce_f", death_announce_f);
+			nbt.putDouble("death_img", death_img);
+			nbt.putDouble("tick_counter", tick_counter);
 			return nbt;
 		}
 
@@ -206,8 +215,8 @@ public class ProjectwinterModVariables {
 		@Override
 		public INBT writeNBT(Capability<PlayerVariables> capability, PlayerVariables instance, Direction side) {
 			CompoundNBT nbt = new CompoundNBT();
-			nbt.putDouble("first_join", instance.first_join);
 			nbt.putString("team_name", instance.team_name);
+			nbt.putDouble("first_join", instance.first_join);
 			nbt.putDouble("ban_time", instance.ban_time);
 			return nbt;
 		}
@@ -215,15 +224,15 @@ public class ProjectwinterModVariables {
 		@Override
 		public void readNBT(Capability<PlayerVariables> capability, PlayerVariables instance, Direction side, INBT inbt) {
 			CompoundNBT nbt = (CompoundNBT) inbt;
-			instance.first_join = nbt.getDouble("first_join");
 			instance.team_name = nbt.getString("team_name");
+			instance.first_join = nbt.getDouble("first_join");
 			instance.ban_time = nbt.getDouble("ban_time");
 		}
 	}
 
 	public static class PlayerVariables {
-		public double first_join = 0;
 		public String team_name = "none";
+		public double first_join = 0;
 		public double ban_time = 0.0;
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayerEntity)
@@ -257,8 +266,8 @@ public class ProjectwinterModVariables {
 		PlayerVariables original = ((PlayerVariables) event.getOriginal().getCapability(PLAYER_VARIABLES_CAPABILITY, null)
 				.orElse(new PlayerVariables()));
 		PlayerVariables clone = ((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables()));
-		clone.first_join = original.first_join;
 		clone.team_name = original.team_name;
+		clone.first_join = original.first_join;
 		clone.ban_time = original.ban_time;
 		if (!event.isWasDeath()) {
 		}
@@ -284,8 +293,8 @@ public class ProjectwinterModVariables {
 				if (!context.getDirection().getReceptionSide().isServer()) {
 					PlayerVariables variables = ((PlayerVariables) Minecraft.getInstance().player.getCapability(PLAYER_VARIABLES_CAPABILITY, null)
 							.orElse(new PlayerVariables()));
-					variables.first_join = message.data.first_join;
 					variables.team_name = message.data.team_name;
+					variables.first_join = message.data.first_join;
 					variables.ban_time = message.data.ban_time;
 				}
 			});
