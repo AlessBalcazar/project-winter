@@ -104,11 +104,15 @@ public class ProjectwinterModVariables {
 
 	public static class MapVariables extends WorldSavedData {
 		public static final String DATA_NAME = "projectwinter_mapvars";
-		public double initial_setup = 0;
 		public double death_players = 0;
+		public double initial_setup = 0;
 		public double death_announce_f = 0;
 		public double death_img = 0;
 		public double tick_counter = 0;
+		public boolean prog_spider_1_flag = false;
+		public boolean prog_spider_2_flag = false;
+		public boolean prog_zombie_1_flag = false;
+		public boolean prog_skeleton_1_flag = false;
 		public MapVariables() {
 			super(DATA_NAME);
 		}
@@ -119,20 +123,28 @@ public class ProjectwinterModVariables {
 
 		@Override
 		public void read(CompoundNBT nbt) {
-			initial_setup = nbt.getDouble("initial_setup");
 			death_players = nbt.getDouble("death_players");
+			initial_setup = nbt.getDouble("initial_setup");
 			death_announce_f = nbt.getDouble("death_announce_f");
 			death_img = nbt.getDouble("death_img");
 			tick_counter = nbt.getDouble("tick_counter");
+			prog_spider_1_flag = nbt.getBoolean("prog_spider_1_flag");
+			prog_spider_2_flag = nbt.getBoolean("prog_spider_2_flag");
+			prog_zombie_1_flag = nbt.getBoolean("prog_zombie_1_flag");
+			prog_skeleton_1_flag = nbt.getBoolean("prog_skeleton_1_flag");
 		}
 
 		@Override
 		public CompoundNBT write(CompoundNBT nbt) {
-			nbt.putDouble("initial_setup", initial_setup);
 			nbt.putDouble("death_players", death_players);
+			nbt.putDouble("initial_setup", initial_setup);
 			nbt.putDouble("death_announce_f", death_announce_f);
 			nbt.putDouble("death_img", death_img);
 			nbt.putDouble("tick_counter", tick_counter);
+			nbt.putBoolean("prog_spider_1_flag", prog_spider_1_flag);
+			nbt.putBoolean("prog_spider_2_flag", prog_spider_2_flag);
+			nbt.putBoolean("prog_zombie_1_flag", prog_zombie_1_flag);
+			nbt.putBoolean("prog_skeleton_1_flag", prog_skeleton_1_flag);
 			return nbt;
 		}
 

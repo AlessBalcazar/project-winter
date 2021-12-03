@@ -1,15 +1,10 @@
 package net.mcreator.projectwinter.procedures;
 
-import net.minecraftforge.fml.server.ServerLifecycleHooks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.TickEvent;
 
 import net.minecraft.world.IWorld;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.ChatType;
-import net.minecraft.util.Util;
-import net.minecraft.server.MinecraftServer;
 
 import net.mcreator.projectwinter.ProjectwinterModVariables;
 import net.mcreator.projectwinter.ProjectwinterMod;
@@ -49,13 +44,6 @@ public class DeathAnnounceIMGProcedure {
 				ProjectwinterModVariables.MapVariables
 						.get(world).death_img = (double) (ProjectwinterModVariables.MapVariables.get(world).death_img + 1);
 				ProjectwinterModVariables.MapVariables.get(world).syncData(world);
-				if (!world.isRemote()) {
-					MinecraftServer mcserv = ServerLifecycleHooks.getCurrentServer();
-					if (mcserv != null)
-						mcserv.getPlayerList().func_232641_a_(
-								new StringTextComponent((("img: ") + "" + (ProjectwinterModVariables.MapVariables.get(world).death_img))),
-								ChatType.SYSTEM, Util.DUMMY_UUID);
-				}
 			}
 		}
 	}

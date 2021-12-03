@@ -74,6 +74,12 @@ public class InitialSetupProcedure {
 								new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
 						"scoreboard objectives add ban_seconds dummy");
 			}
+			if (world instanceof ServerWorld) {
+				((World) world).getServer().getCommandManager().handleCommand(
+						new CommandSource(ICommandSource.DUMMY, new Vector3d(x, y, z), Vector2f.ZERO, (ServerWorld) world, 4, "",
+								new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
+						"summon minecraft:armor_stand ~ ~10 ~ {Marker:1b,NoGravity:1b,Invisible:1b,Tags:[\"MainControllerEntity\"]}");
+			}
 			ProjectwinterModVariables.MapVariables.get(world).initial_setup = (double) 1;
 			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
 		}

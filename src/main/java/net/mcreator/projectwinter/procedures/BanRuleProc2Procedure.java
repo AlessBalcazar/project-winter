@@ -8,6 +8,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.GameType;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.math.vector.Vector2f;
@@ -18,8 +19,11 @@ import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScoreCriteria;
 import net.minecraft.scoreboard.Score;
+import net.minecraft.potion.Effects;
+import net.minecraft.potion.EffectInstance;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.command.ICommandSource;
 import net.minecraft.command.CommandSource;
@@ -99,6 +103,8 @@ public class BanRuleProc2Procedure {
 		}.getScore("death_status")) == 1)) {
 			ProjectwinterModVariables.MapVariables.get(world).death_announce_f = (double) 1;
 			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
+			ProjectwinterModVariables.MapVariables.get(world).death_img = (double) 0;
+			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
 			if (world instanceof World && !world.isRemote()) {
 				((World) world).playSound(null, new BlockPos((int) x, (int) y, (int) z),
 						(net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("projectwinter:permadeath_sound")),
@@ -109,7 +115,7 @@ public class BanRuleProc2Procedure {
 						SoundCategory.MASTER, (float) 1, (float) 1, false);
 			}
 			{
-				double _setval = (double) 12000;
+				double _setval = (double) 100;
 				entity.getCapability(ProjectwinterModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 					capability.ban_time = _setval;
 					capability.syncPlayerVariables(entity);
@@ -171,6 +177,10 @@ public class BanRuleProc2Procedure {
 					((ServerPlayerEntity) _ent).connection.setPlayerLocation(x, y, z, _ent.rotationYaw, _ent.rotationPitch, Collections.emptySet());
 				}
 			}
+			if (entity instanceof LivingEntity)
+				((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.INVISIBILITY, (int) 20, (int) 10));
+			if (entity instanceof PlayerEntity)
+				((PlayerEntity) entity).setGameType(GameType.SPECTATOR);
 			{
 				double _setval = (double) (((entity.getCapability(ProjectwinterModVariables.PLAYER_VARIABLES_CAPABILITY, null)
 						.orElse(new ProjectwinterModVariables.PlayerVariables())).ban_time) - 1);
@@ -198,7 +208,7 @@ public class BanRuleProc2Procedure {
 				ProjectwinterModVariables.MapVariables
 						.get(world).death_players = (double) (ProjectwinterModVariables.MapVariables.get(world).death_players - 1);
 				ProjectwinterModVariables.MapVariables.get(world).syncData(world);
-				if ((ProjectwinterModVariables.MapVariables.get(world).death_players <= 0)) {
+				if ((ProjectwinterModVariables.MapVariables.get(world).death_players == 0)) {
 					{
 						Entity _ent = entity;
 						if (!_ent.world.isRemote && _ent.world.getServer() != null) {
@@ -218,6 +228,8 @@ public class BanRuleProc2Procedure {
 								"tellraw @a [{\"selector\":\"@s\",\"bold\":true,\"color\":\"blue\"},{\"text\":\" ha sido desbaneado!\",\"color\":\"dark_purple\"}]");
 					}
 				}
+				if (entity instanceof PlayerEntity)
+					((PlayerEntity) entity).setGameType(GameType.SURVIVAL);
 				{
 					Entity _ent = entity;
 					if (_ent instanceof PlayerEntity) {
