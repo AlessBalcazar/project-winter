@@ -57,7 +57,7 @@ public class DeathAnnounceOverlay {
 			RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 			RenderSystem.disableAlphaTest();
 			if (DeathAnnounceControlProcedure.executeProcedure(ImmutableMap.of("world", world))) {
-				Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("projectwinter:textures/permadeath_png"+dummy+".png"));
+				Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("projectwinter:textures/permadeath_animation"+dummy+".png"));
 				Minecraft.getInstance().ingameGUI.blit(event.getMatrixStack(), posX + -99, posY + -112, 0, 0, 200, 200, 200, 200);
 			}
 			RenderSystem.depthMask(true);

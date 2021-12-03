@@ -38,7 +38,7 @@ public class DeathAnnounceIMGProcedure {
 			return;
 		}
 		IWorld world = (IWorld) dependencies.get("world");
-		if ((ProjectwinterModVariables.MapVariables.get(world).death_img == 48)) {
+		if ((ProjectwinterModVariables.MapVariables.get(world).death_img == 76)) {
 			ProjectwinterModVariables.MapVariables.get(world).death_img = (double) 0;
 			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
 			ProjectwinterModVariables.MapVariables.get(world).death_announce_f = (double) 0;

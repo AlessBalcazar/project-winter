@@ -339,13 +339,13 @@
       "path": "~/BanRules/DeathAnnounceAnimation"
     },
     {
-      "name": "DeathAnnounceTick",
+      "name": "TickMaster",
       "type": "procedure",
-      "sortid": 16,
+      "sortid": 17,
       "compiles": true,
       "locked_code": false,
       "ids": {},
-      "registry_name": "death_announce_tick",
+      "registry_name": "tick_master",
       "metadata": {
         "dependencies": [
           {
@@ -353,8 +353,7 @@
             "type": "world"
           }
         ]
-      },
-      "path": "~/BanRules/DeathAnnounceAnimation"
+      }
     }
   ],
   "variable_elements": [
