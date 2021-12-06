@@ -56,7 +56,7 @@ public class Spider1Procedure {
 				.contains(entity.getType()))) {
 			if (ProjectwinterModVariables.MapVariables.get(world).prog_spider_1_flag) {
 				if (entity instanceof LivingEntity)
-					((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.STRENGTH, (int) 72000, (int) 3));
+					((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.STRENGTH, (int) Double.POSITIVE_INFINITY, (int) 3));
 			}
 		}
 	}

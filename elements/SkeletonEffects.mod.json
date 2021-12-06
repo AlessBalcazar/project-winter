@@ -11,7 +11,7 @@
         "value": "EntitySkeleton"
       }
     ],
-    "name": "eskeleton_effects",
+    "name": "skeleton_effects",
     "namespace": "minecraft"
   }
 }

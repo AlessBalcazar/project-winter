@@ -56,7 +56,7 @@ public class Zombie1Procedure {
 				.contains(entity.getType()))) {
 			if (ProjectwinterModVariables.MapVariables.get(world).prog_zombie_1_flag) {
 				if (entity instanceof LivingEntity)
-					((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SPEED, (int) 72000, (int) 2));
+					((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SPEED, (int) Double.POSITIVE_INFINITY, (int) 1));
 			}
 		}
 	}

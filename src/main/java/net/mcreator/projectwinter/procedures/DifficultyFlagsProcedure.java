@@ -56,7 +56,7 @@ public class DifficultyFlagsProcedure {
 							"tellraw @a [\"\",{\"text\":\"NUEVA DIFICULTAD!!! -  \",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"LOS ZOMBIES AHORA TIENEN \",\"color\":\"blue\"},{\"text\":\"VELOCIDAD II\",\"bold\":true,\"color\":\"blue\"}]");
 				}
 			}
-			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > 100)
+			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > 3456000)
 					&& (!ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_1_flag))) {
 				ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_1_flag = (boolean) (true);
 				ProjectwinterModVariables.MapVariables.get(world).syncData(world);
@@ -67,7 +67,7 @@ public class DifficultyFlagsProcedure {
 							"tellraw @a [\"\",{\"text\":\"NUEVA DIFICULTAD!!! -  \",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"LOS ESQUELETOS AHORA TIENEN \",\"color\":\"blue\"},{\"text\":\"ARMADURAS\",\"bold\":true,\"color\":\"blue\"}]");
 				}
 			}
-			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > 1200)
+			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > 5184000)
 					&& (!ProjectwinterModVariables.MapVariables.get(world).prog_spider_1_flag))) {
 				ProjectwinterModVariables.MapVariables.get(world).prog_spider_1_flag = (boolean) (true);
 				ProjectwinterModVariables.MapVariables.get(world).syncData(world);

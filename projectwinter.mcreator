@@ -438,16 +438,6 @@
       "path": "~/ProgressiveDifficulty"
     },
     {
-      "name": "EskeletonEffects",
-      "type": "tag",
-      "sortid": 23,
-      "compiles": true,
-      "locked_code": false,
-      "ids": {},
-      "registry_name": "eskeleton_effects",
-      "path": "~/ProgressiveDifficulty/Tags"
-    },
-    {
       "name": "Skeleton1",
       "type": "procedure",
       "sortid": 24,
@@ -468,6 +458,16 @@
         ]
       },
       "path": "~/ProgressiveDifficulty"
+    },
+    {
+      "name": "SkeletonEffects",
+      "type": "tag",
+      "sortid": 25,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "skeleton_effects",
+      "path": "~/ProgressiveDifficulty/Tags"
     }
   ],
   "variable_elements": [

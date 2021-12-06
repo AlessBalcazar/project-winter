@@ -6,8 +6,17 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 
 import net.minecraft.world.World;
 import net.minecraft.world.IWorld;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.potion.Effects;
+import net.minecraft.potion.EffectInstance;
+import net.minecraft.item.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Entity;
 
 import net.mcreator.projectwinter.ProjectwinterModVariables;
@@ -49,9 +58,128 @@ public class Skeleton1Procedure {
 		}
 		Entity entity = (Entity) dependencies.get("entity");
 		IWorld world = (IWorld) dependencies.get("world");
+		double armor_probability = 0;
 		if ((EntityTypeTags.getCollection().getTagByID(new ResourceLocation(("minecraft:skeleton_effects").toLowerCase(java.util.Locale.ENGLISH)))
 				.contains(entity.getType()))) {
 			if (ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_1_flag) {
+				armor_probability = (double) Math.random();
+				if (((armor_probability >= 0) && (armor_probability <= 0.8))) {
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 3, new ItemStack(Items.IRON_HELMET));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 3),
+									new ItemStack(Items.IRON_HELMET));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 2, new ItemStack(Items.IRON_CHESTPLATE));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 2),
+									new ItemStack(Items.IRON_CHESTPLATE));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 1, new ItemStack(Items.IRON_LEGGINGS));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 1),
+									new ItemStack(Items.IRON_LEGGINGS));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 0, new ItemStack(Items.IRON_BOOTS));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 0),
+									new ItemStack(Items.IRON_BOOTS));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+				} else if (((armor_probability > 0.8) && (armor_probability <= 0.98))) {
+					if (entity instanceof LivingEntity)
+						((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SPEED, (int) Double.POSITIVE_INFINITY, (int) 1));
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 3, new ItemStack(Items.DIAMOND_HELMET));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 3),
+									new ItemStack(Items.DIAMOND_HELMET));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 2, new ItemStack(Items.DIAMOND_CHESTPLATE));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 2),
+									new ItemStack(Items.DIAMOND_CHESTPLATE));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 1, new ItemStack(Items.DIAMOND_LEGGINGS));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 1),
+									new ItemStack(Items.DIAMOND_LEGGINGS));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 0, new ItemStack(Items.DIAMOND_BOOTS));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 0),
+									new ItemStack(Items.DIAMOND_BOOTS));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+				} else if (((armor_probability > 0.98) && (armor_probability < 1))) {
+					entity.setCustomName(new StringTextComponent("Rey esqueleto"));
+					if (entity instanceof LivingEntity)
+						((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.STRENGTH, (int) Double.POSITIVE_INFINITY, (int) 3));
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 3, new ItemStack(Items.NETHERITE_HELMET));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 3),
+									new ItemStack(Items.NETHERITE_HELMET));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 2, new ItemStack(Items.NETHERITE_CHESTPLATE));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 2),
+									new ItemStack(Items.NETHERITE_CHESTPLATE));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 1, new ItemStack(Items.NETHERITE_LEGGINGS));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 1),
+									new ItemStack(Items.NETHERITE_LEGGINGS));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+					if (entity instanceof LivingEntity) {
+						if (entity instanceof PlayerEntity)
+							((PlayerEntity) entity).inventory.armorInventory.set((int) 0, new ItemStack(Items.NETHERITE_BOOTS));
+						else
+							((LivingEntity) entity).setItemStackToSlot(EquipmentSlotType.fromSlotTypeAndIndex(EquipmentSlotType.Group.ARMOR, (int) 0),
+									new ItemStack(Items.NETHERITE_BOOTS));
+						if (entity instanceof ServerPlayerEntity)
+							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+				}
 			}
 		}
 	}
