@@ -80,6 +80,8 @@ public class InitialSetupProcedure {
 								new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
 						"summon minecraft:armor_stand ~ ~10 ~ {Marker:1b,NoGravity:1b,Invisible:1b,Tags:[\"MainControllerEntity\"]}");
 			}
+			ProjectwinterModVariables.MapVariables.get(world).const_ticks_day = (double) 1728000;
+			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
 			ProjectwinterModVariables.MapVariables.get(world).initial_setup = (double) 1;
 			ProjectwinterModVariables.MapVariables.get(world).syncData(world);
 		}

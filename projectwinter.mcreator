@@ -468,6 +468,26 @@
       "ids": {},
       "registry_name": "skeleton_effects",
       "path": "~/ProgressiveDifficulty/Tags"
+    },
+    {
+      "name": "SlimeEffects",
+      "type": "tag",
+      "sortid": 26,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "slime_effects",
+      "path": "~/ProgressiveDifficulty/Tags"
+    },
+    {
+      "name": "MagmaCubeEffects",
+      "type": "tag",
+      "sortid": 27,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "magma_cube_effects",
+      "path": "~/ProgressiveDifficulty/Tags"
     }
   ],
   "variable_elements": [
@@ -542,6 +562,12 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
+    },
+    {
+      "name": "const_ticks_day",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
     }
   ],
   "sound_elements": [
