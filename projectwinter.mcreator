@@ -488,6 +488,24 @@
       "ids": {},
       "registry_name": "magma_cube_effects",
       "path": "~/ProgressiveDifficulty/Tags"
+    },
+    {
+      "name": "SlimesMagma1",
+      "type": "procedure",
+      "sortid": 28,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "slimes_magma_1",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/ProgressiveDifficulty"
     }
   ],
   "variable_elements": [
