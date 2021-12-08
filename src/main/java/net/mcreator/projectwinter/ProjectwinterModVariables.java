@@ -115,7 +115,8 @@ public class ProjectwinterModVariables {
 		public boolean prog_skeleton_1_flag = false;
 		public double const_ticks_day = 0;
 		public boolean prog_slime_1_flag = false;
-		public boolean prog_zombie_golem_1 = false;
+		public boolean prog_zombie_golem_1_flag = false;
+		public boolean prog_phantom_1_flag = false;
 		public MapVariables() {
 			super(DATA_NAME);
 		}
@@ -137,7 +138,8 @@ public class ProjectwinterModVariables {
 			prog_skeleton_1_flag = nbt.getBoolean("prog_skeleton_1_flag");
 			const_ticks_day = nbt.getDouble("const_ticks_day");
 			prog_slime_1_flag = nbt.getBoolean("prog_slime_1_flag");
-			prog_zombie_golem_1 = nbt.getBoolean("prog_zombie_golem_1");
+			prog_zombie_golem_1_flag = nbt.getBoolean("prog_zombie_golem_1_flag");
+			prog_phantom_1_flag = nbt.getBoolean("prog_phantom_1_flag");
 		}
 
 		@Override
@@ -153,7 +155,8 @@ public class ProjectwinterModVariables {
 			nbt.putBoolean("prog_skeleton_1_flag", prog_skeleton_1_flag);
 			nbt.putDouble("const_ticks_day", const_ticks_day);
 			nbt.putBoolean("prog_slime_1_flag", prog_slime_1_flag);
-			nbt.putBoolean("prog_zombie_golem_1", prog_zombie_golem_1);
+			nbt.putBoolean("prog_zombie_golem_1_flag", prog_zombie_golem_1_flag);
+			nbt.putBoolean("prog_phantom_1_flag", prog_phantom_1_flag);
 			return nbt;
 		}
 

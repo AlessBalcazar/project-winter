@@ -33,6 +33,6 @@ public class ZombieGolem1Procedure {
 			return false;
 		}
 		IWorld world = (IWorld) dependencies.get("world");
-		return ProjectwinterModVariables.MapVariables.get(world).prog_zombie_golem_1;
+		return ProjectwinterModVariables.MapVariables.get(world).prog_zombie_golem_1_flag;
 	}
 }

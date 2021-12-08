@@ -523,7 +523,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/ProgressiveDifficulty"
     },
     {
       "name": "ZombieGolem",
@@ -534,6 +535,38 @@
       "ids": {},
       "registry_name": "zombie_golem",
       "path": "~/ProgressiveDifficulty/NewMobs"
+    },
+    {
+      "name": "PhantomEffects",
+      "type": "tag",
+      "sortid": 30,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "phantom_effects",
+      "path": "~/ProgressiveDifficulty/Tags"
+    },
+    {
+      "name": "Phantom1",
+      "type": "procedure",
+      "sortid": 31,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "phantom_1",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/ProgressiveDifficulty"
     }
   ],
   "variable_elements": [
@@ -622,7 +655,13 @@
       "value": "false"
     },
     {
-      "name": "prog_zombie_golem_1",
+      "name": "prog_zombie_golem_1_flag",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "prog_phantom_1_flag",
       "type": "logic",
       "scope": "map",
       "value": "false"

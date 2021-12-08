@@ -89,15 +89,26 @@ public class DifficultyFlagsProcedure {
 							"tellraw @a [\"\",{\"text\":\"NUEVA DIFICULTAD!!! -  \",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"LOS SLIMES Y MAGMA CUBES AHORA SON \",\"color\":\"blue\"},{\"text\":\"MEGA\",\"bold\":true,\"color\":\"blue\"}]");
 				}
 			}
-			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > 200)
-					&& (!ProjectwinterModVariables.MapVariables.get(world).prog_zombie_golem_1))) {
-				ProjectwinterModVariables.MapVariables.get(world).prog_zombie_golem_1 = (boolean) (true);
+			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > (ProjectwinterModVariables.MapVariables.get(world).const_ticks_day
+					* 5)) && (!ProjectwinterModVariables.MapVariables.get(world).prog_zombie_golem_1_flag))) {
+				ProjectwinterModVariables.MapVariables.get(world).prog_zombie_golem_1_flag = (boolean) (true);
 				ProjectwinterModVariables.MapVariables.get(world).syncData(world);
 				if (world instanceof ServerWorld) {
 					((World) world).getServer().getCommandManager().handleCommand(
 							new CommandSource(ICommandSource.DUMMY, new Vector3d(0, 0, 0), Vector2f.ZERO, (ServerWorld) world, 4, "",
 									new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
 							"tellraw @a [\"\",{\"text\":\"NUEVA DIFICULTAD!!! -  \",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"AHORA SPAWNEAN \",\"color\":\"blue\"},{\"text\":\"ZOMBIE GOLEMS\",\"bold\":true,\"color\":\"blue\"}]");
+				}
+			}
+			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > (ProjectwinterModVariables.MapVariables.get(world).const_ticks_day
+					* 6)) && (!ProjectwinterModVariables.MapVariables.get(world).prog_phantom_1_flag))) {
+				ProjectwinterModVariables.MapVariables.get(world).prog_phantom_1_flag = (boolean) (true);
+				ProjectwinterModVariables.MapVariables.get(world).syncData(world);
+				if (world instanceof ServerWorld) {
+					((World) world).getServer().getCommandManager().handleCommand(
+							new CommandSource(ICommandSource.DUMMY, new Vector3d(0, 0, 0), Vector2f.ZERO, (ServerWorld) world, 4, "",
+									new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
+							"tellraw @a [\"\",{\"text\":\"NUEVA DIFICULTAD!!! -  \",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"LOS PHANTOMS AHORA SON \",\"color\":\"blue\"},{\"text\":\"MEGA CON FUERZA I\",\"bold\":true,\"color\":\"blue\"}]");
 				}
 			}
 		}
