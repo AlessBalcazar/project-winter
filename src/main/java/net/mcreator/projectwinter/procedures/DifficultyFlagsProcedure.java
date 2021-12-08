@@ -78,6 +78,17 @@ public class DifficultyFlagsProcedure {
 							"tellraw @a [\"\",{\"text\":\"NUEVA DIFICULTAD!!! -  \",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"LAS ARANAS AHORA TIENEN \",\"color\":\"blue\"},{\"text\":\"FUERZA III\",\"bold\":true,\"color\":\"blue\"}]");
 				}
 			}
+			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > (ProjectwinterModVariables.MapVariables.get(world).const_ticks_day
+					* 4)) && (!ProjectwinterModVariables.MapVariables.get(world).prog_slime_1_flag))) {
+				ProjectwinterModVariables.MapVariables.get(world).prog_slime_1_flag = (boolean) (true);
+				ProjectwinterModVariables.MapVariables.get(world).syncData(world);
+				if (world instanceof ServerWorld) {
+					((World) world).getServer().getCommandManager().handleCommand(
+							new CommandSource(ICommandSource.DUMMY, new Vector3d(0, 0, 0), Vector2f.ZERO, (ServerWorld) world, 4, "",
+									new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
+							"tellraw @a [\"\",{\"text\":\"NUEVA DIFICULTAD!!! -  \",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"LOS SLIMES Y MAGMA CUBES AHORA SON\",\"color\":\"blue\"},{\"text\":\"MEGA\",\"bold\":true,\"color\":\"blue\"}]");
+				}
+			}
 		}
 	}
 }
