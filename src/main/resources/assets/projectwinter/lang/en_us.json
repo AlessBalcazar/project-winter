@@ -1,3 +1,5 @@
 {
-  "subtitles.permadeath_sound": ""
+  "entity.projectwinter.zombie_golem": "Zombie Golem",
+  "subtitles.permadeath_sound": "",
+  "item.projectwinter.zombie_golem_spawn_egg": "Zombie Golem Spawn Egg"
 }

@@ -506,6 +506,34 @@
         ]
       },
       "path": "~/ProgressiveDifficulty"
+    },
+    {
+      "name": "ZombieGolem1",
+      "type": "procedure",
+      "sortid": 29,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "zombie_golem_1",
+      "metadata": {
+        "return_type": "logic",
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ZombieGolem",
+      "type": "livingentity",
+      "sortid": 29,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "zombie_golem",
+      "path": "~/ProgressiveDifficulty/NewMobs"
     }
   ],
   "variable_elements": [
@@ -592,6 +620,12 @@
       "type": "logic",
       "scope": "map",
       "value": "false"
+    },
+    {
+      "name": "prog_zombie_golem_1",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
     }
   ],
   "sound_elements": [
@@ -606,7 +640,9 @@
   ],
   "language_map": {
     "en_us": {
-      "subtitles.permadeath_sound": ""
+      "entity.projectwinter.zombie_golem": "Zombie Golem",
+      "subtitles.permadeath_sound": "",
+      "item.projectwinter.zombie_golem_spawn_egg": "Zombie Golem Spawn Egg"
     }
   },
   "foldersRoot": {
@@ -647,6 +683,10 @@
         "children": [
           {
             "name": "Tags",
+            "children": []
+          },
+          {
+            "name": "NewMobs",
             "children": []
           }
         ]
