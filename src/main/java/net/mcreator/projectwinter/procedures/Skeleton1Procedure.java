@@ -100,6 +100,10 @@ public class Skeleton1Procedure {
 						if (entity instanceof ServerPlayerEntity)
 							((ServerPlayerEntity) entity).inventory.markDirty();
 					}
+					if (ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_2_flag) {
+						if (entity instanceof LivingEntity)
+							((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.STRENGTH, (int) Double.POSITIVE_INFINITY, (int) 1));
+					}
 				} else if (((armor_probability > 0.8) && (armor_probability <= 0.98))) {
 					if (entity instanceof LivingEntity)
 						((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.SPEED, (int) Double.POSITIVE_INFINITY, (int) 1));
@@ -139,10 +143,12 @@ public class Skeleton1Procedure {
 						if (entity instanceof ServerPlayerEntity)
 							((ServerPlayerEntity) entity).inventory.markDirty();
 					}
+					if (ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_2_flag) {
+						if (entity instanceof LivingEntity)
+							((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.STRENGTH, (int) Double.POSITIVE_INFINITY, (int) 3));
+					}
 				} else if (((armor_probability > 0.98) && (armor_probability < 1))) {
 					entity.setCustomName(new StringTextComponent("Rey esqueleto"));
-					if (entity instanceof LivingEntity)
-						((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.STRENGTH, (int) Double.POSITIVE_INFINITY, (int) 3));
 					if (entity instanceof LivingEntity) {
 						if (entity instanceof PlayerEntity)
 							((PlayerEntity) entity).inventory.armorInventory.set((int) 3, new ItemStack(Items.NETHERITE_HELMET));
@@ -178,6 +184,13 @@ public class Skeleton1Procedure {
 									new ItemStack(Items.NETHERITE_BOOTS));
 						if (entity instanceof ServerPlayerEntity)
 							((ServerPlayerEntity) entity).inventory.markDirty();
+					}
+					if (ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_2_flag) {
+						if (entity instanceof LivingEntity)
+							((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.STRENGTH, (int) Double.POSITIVE_INFINITY, (int) 5));
+					} else {
+						if (entity instanceof LivingEntity)
+							((LivingEntity) entity).addPotionEffect(new EffectInstance(Effects.STRENGTH, (int) Double.POSITIVE_INFINITY, (int) 3));
 					}
 				}
 			}

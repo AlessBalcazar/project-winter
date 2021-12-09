@@ -56,8 +56,8 @@ public class DifficultyFlagsProcedure {
 							"tellraw @a [\"\",{\"text\":\"NUEVA DIFICULTAD!!! -  \",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"LOS ZOMBIES AHORA TIENEN \",\"color\":\"blue\"},{\"text\":\"VELOCIDAD II\",\"bold\":true,\"color\":\"blue\"}]");
 				}
 			}
-			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > (ProjectwinterModVariables.MapVariables.get(world).const_ticks_day
-					* 2)) && (!ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_1_flag))) {
+			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > 200)
+					&& (!ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_1_flag))) {
 				ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_1_flag = (boolean) (true);
 				ProjectwinterModVariables.MapVariables.get(world).syncData(world);
 				if (world instanceof ServerWorld) {
@@ -109,6 +109,17 @@ public class DifficultyFlagsProcedure {
 							new CommandSource(ICommandSource.DUMMY, new Vector3d(0, 0, 0), Vector2f.ZERO, (ServerWorld) world, 4, "",
 									new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
 							"tellraw @a [\"\",{\"text\":\"NUEVA DIFICULTAD!!! -  \",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"LOS PHANTOMS AHORA SON \",\"color\":\"blue\"},{\"text\":\"MEGA CON FUERZA I\",\"bold\":true,\"color\":\"blue\"}]");
+				}
+			}
+			if (((ProjectwinterModVariables.MapVariables.get(world).tick_counter > 200)
+					&& (!ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_2_flag))) {
+				ProjectwinterModVariables.MapVariables.get(world).prog_skeleton_2_flag = (boolean) (true);
+				ProjectwinterModVariables.MapVariables.get(world).syncData(world);
+				if (world instanceof ServerWorld) {
+					((World) world).getServer().getCommandManager().handleCommand(
+							new CommandSource(ICommandSource.DUMMY, new Vector3d(0, 0, 0), Vector2f.ZERO, (ServerWorld) world, 4, "",
+									new StringTextComponent(""), ((World) world).getServer(), null).withFeedbackDisabled(),
+							"tellraw @a [\"\",{\"text\":\"NUEVA DIFICULTAD!!! -  \",\"bold\":true,\"color\":\"dark_red\"},{\"text\":\"LOS ESQUELETOS AHORA TIENEN \",\"color\":\"blue\"},{\"text\":\"- ESQUELETOS DE HIERRO: FUERZA I - ESQUELETOS DE DIAMANTE: FUERZA III - REY ESQUELETO: FUERZA V\",\"bold\":true,\"color\":\"blue\"}]");
 				}
 			}
 		}
